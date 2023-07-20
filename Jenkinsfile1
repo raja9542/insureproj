@@ -1,0 +1,20 @@
+pipeline {
+    agent any 
+    tools {
+        maven 'M2_HOME'
+    }
+    stages{
+        stage('checkout') {
+            steps{
+                echo 'checking out code from gitrepo'
+                git 'https://github.com/raja9542/insureproj.git'
+            }  
+        }
+        stage('build') {
+            steps{
+                echo 'building the maven package'
+                sh 'mvn clean package'
+            }  
+        }
+    }
+}
